@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}<h2> Seller Register</h2>{% endblock %}
+{% block content %}
+<form method="post" action="">
+    {% csrf_token %}
+    {{user_form.as_p}}
+    {{profile_form.as_p}}
+    <input type="submit" value="Register">
+</form>
+<a href="{% url 'accounts:seller_register'%}"> Already have an Account </a>
+{% endblock %}

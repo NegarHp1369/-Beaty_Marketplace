@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% block title %}My Products{% endblock %}
+{% block content %}
+<div class="container mt-4">
+
+    {% for product in products%}
+
+    <div class="card" style="width: 18rem;">
+        {% if product.image %}
+        <img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
+        {% else %}
+        <img src="" class="card-img-top" alt="No image">
+        {% endif%}
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p class="fw-bold">${{ product.price }}</p>
+            <a href="{% url 'product:product_detail' product.pk %}" class="btn btn-primary btn-sm">View Product
+                Details</a>
+            {% if user == product.seller %}
+            <a href="{% url 'product:product_update' product.pk%}" class="btn btn-warning btn-sm">Edit</a>
+            <form action="{% url 'product:product_update' product.pk%}" method="post" style="display:inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endfor %}
+    {% if user.is_authenticated%}
+    <a href="{% url 'product:product_create'%}" class="btn btn-success mt-4">Add New Product</a>
+    {% endif%}
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block title %} Set My Products{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>{{form.instance.pk|yesno:'edit product, and product'}}</h2>
+    <form action="" method="post" enctype="multipart/form-data" class = 'card p-4 shadow-sm'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary"> save </button>
+        <a href="{% url 'product:product_list' %}" class="btn btn-secondary">Cancel</a>
+
+    </form>
+
+</div>
+{% endblock %}

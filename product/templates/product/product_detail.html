@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block title %}My Products Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+
+
+            <div class="card" style="width: 18rem;">
+                {% if product.image %}
+                <img src="{{product.image.url}}" class="card-img-top" alt="{{product.name}}">
+                {% else %}
+                <img src="" class="card-img-top" alt="No Image">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <p class="fw-bold fs-4">${{ product.price }}</p>
+                    <p>Seller : {{product.seller.username}}</p>
+                    {% if seller == product.seller %}
+                    <a href="{% url 'product:product_update' product.pk %}" class="btn btn-warning">Edit</a>
+                    {% endif %}
+                    <a href="{% url 'product:product_list'%}" class="btn btn-secondary">Back to product_list page</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
