@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% block title %}<p> payment page </p>{% endblock %}
+{% block content %}
+<p> payment for order #{{order.id}}</p>
+<p>Total price :{{ total }}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-success"> Payment Now </button>
+</form>
+{% endblock %}

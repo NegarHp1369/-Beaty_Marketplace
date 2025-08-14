@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 
-from django.conf.global_settings import EMAIL_BACKEND, DEFAULT_FROM_EMAIL
+from django.conf.global_settings import EMAIL_BACKEND, DEFAULT_FROM_EMAIL, MEDIA_URL, MEDIA_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,7 +134,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Rest_framework_settings
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ('rest_framework_simplejwt.authentication.JWTAuthentication',)
+    "DEFAULT_AUTHENTICATION_CLASSES": ('rest_framework_simplejwt.authentication.JWTAuthentication',),
+    "DEFAULT_PAGINATION_CLASS": 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5,
 }
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
@@ -144,4 +146,12 @@ SIMPLE_JWT = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'noreplay@beatymarket.com'
+
+#media files
+MEDIA_URL ='/media/'
+MEDIA_ROOT = BASE_DIR/'media'
+
+
+CART_SESSION_ID = 'cart'
+
 

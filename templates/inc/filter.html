@@ -1,0 +1,26 @@
+<form class="row g-3 mb-3" method="get" action="{% url 'product:product_list'%}">
+
+    <!-- category filter -->
+    <div class="col-md-4">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" name="category" id="category" placeholder="Shampoo">
+    </div>
+
+    <!--min_price filter-->
+    <div class="col-md-3">
+        <label for="min_price" class="form-label">Minimum Price</label>
+        <input type="number" class="form-control" name="min-price" id="min-price" placeholder="50">
+    </div>
+
+    <!--max-price-->
+    <div class="col-md-3">
+        <label for="max-price" class="form-label">maximum price</label>
+        <input type="number" class="form-control" name="max-price" id="max-price" placeholder="200">
+    </div>
+    <!--search button-->
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100" > Search</button>
+
+    </div>
+
+</form>
